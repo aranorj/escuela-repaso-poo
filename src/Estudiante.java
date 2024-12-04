@@ -1,12 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Estudiante extends Persona{
-    private double promedio;
-    private String matricula;
 
-    public Estudiante(String nombre, int edad, double promedio){
+    List<Curso> cursosALosQueAsiste = new ArrayList<>();
+    String matricula;
+
+    public Estudiante(String nombre, int edad){
         super(nombre, edad);
-        this.promedio = promedio;
         this.matricula = UUID.randomUUID().toString();
     }
 
@@ -15,16 +17,11 @@ public class Estudiante extends Persona{
         System.out.println(String.format("%s Soy un estudiante!", saludo));
     }
 
-    public double getPromedio(){
-        return promedio;
+    public List<Curso> getCursosALosQueAsiste() {
+        return cursosALosQueAsiste;
     }
 
-    public void setPromedio(double promedio){
-        this.promedio = promedio;
+    public void addCursoAsiste(Curso curso){
+        cursosALosQueAsiste.add(curso);
     }
-
-    public String getMatricula(){
-        return matricula;
-    }
-
 }

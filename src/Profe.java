@@ -1,9 +1,8 @@
 public class Profe extends Persona{
     private String materia;
 
-    public Profe(String nombre, int edad, String materia) {
+    public Profe(String nombre, int edad) {
         super(nombre, edad);
-        this.materia = materia;
     }
     public String getMateria() {
         return materia;

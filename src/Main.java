@@ -1,16 +1,39 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Main {
+    //TODO: optimizar
     public static void main(String[] args){
-        Estudiante estudiante1 = new Estudiante("Juanita", 34, 8.93);
-        Persona persona1 = new Persona("Marta", 23);
+        //Si mi sistema pasa a ser de una sola escuela
+        //TODO: refactor escuela singleton
+        Escuela escuelaProgramacion = new Escuela();
+        Curso java = new Curso("Programacion backend con Java", 20);
+        ArrayList<Curso> misCursosProgramacion = new ArrayList<>(){{
+            add(new Curso("Programación Frontend con React", 15));
+            add(java);
+            add(new Curso("Testing basico con Insomnia", 30));
+        }};
 
-        estudiante1.imprimirSaludo("Buenas noches!!!");
-        persona1.imprimirSaludo("Buenos dias!");
+        Curso peluqueria = new Curso("Colorimetría", 20);
 
-        Escuela escuela1 = new Escuela(2, 15);
+        misCursosProgramacion.forEach(curso -> escuelaProgramacion.addCurso(curso));
 
-        Estudiante[][] misGrupos = escuela1.getGrupos();
+        Profe pedro = new Profe("Pedrito", 22 );
+        ArrayList<Profe> profeProgramacion = new ArrayList<>(){{
+            add(pedro);
+            add(new Profe("Marta", 23));
+            add(new Profe("Carlos", 54));
+        }};
+
+        profeProgramacion.forEach(profe -> escuelaProgramacion.addProfe(profe));
+
+
+        //Quiero asignar a pedrito al curso de java
+        escuelaProgramacion.asignarA(pedro, java);
+
+        Profe mirta = new Profe("Mirta", 45);
+        escuelaProgramacion.asignarA(mirta, java);
+
+
 
     }
 }
